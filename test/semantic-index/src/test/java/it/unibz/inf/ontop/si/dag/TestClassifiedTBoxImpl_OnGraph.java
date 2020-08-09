@@ -21,19 +21,29 @@ package it.unibz.inf.ontop.si.dag;
  */
 
 import com.google.common.collect.ImmutableList;
-import it.unibz.inf.ontop.spec.ontology.*;
+import com.google.common.collect.ImmutableSet;
+import it.unibz.inf.ontop.spec.ontology.ClassExpression;
+import it.unibz.inf.ontop.spec.ontology.ClassifiedTBox;
+import it.unibz.inf.ontop.spec.ontology.DataPropertyExpression;
+import it.unibz.inf.ontop.spec.ontology.DataRangeExpression;
+import it.unibz.inf.ontop.spec.ontology.Equivalences;
+import it.unibz.inf.ontop.spec.ontology.EquivalencesDAG;
+import it.unibz.inf.ontop.spec.ontology.NaryAxiom;
+import it.unibz.inf.ontop.spec.ontology.OClass;
+import it.unibz.inf.ontop.spec.ontology.ObjectPropertyExpression;
+import it.unibz.inf.ontop.spec.ontology.OntologyVocabularyCategory;
 import it.unibz.inf.ontop.spec.ontology.impl.ClassifiedTBoxImpl;
-
-import java.util.*;
-import java.util.stream.Stream;
-
-import org.jgrapht.alg.StrongConnectivityInspector;
+import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.EdgeReversedGraph;
 import org.jgrapht.traverse.BreadthFirstIterator;
 
-import com.google.common.collect.ImmutableSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Stream;
 
 /**
  * Reasoning over the TBox using the ontology graph
@@ -141,11 +151,11 @@ public class TestClassifiedTBoxImpl_OnGraph implements ClassifiedTBox {
 		@Override
 		public Equivalences<T> getVertex(T desc) {
 			// search for cycles
-			StrongConnectivityInspector<T, DefaultEdge> inspector = new StrongConnectivityInspector<T, DefaultEdge>(graph);
+			ConnectivityInspector<T, DefaultEdge> inspector = new ConnectivityInspector<T, DefaultEdge>(graph);
 
 			// each set contains vertices which together form a strongly
 			// connected component within the given graph
-			List<Set<T>> equivalenceSets = inspector.stronglyConnectedSets();
+			List<Set<T>> equivalenceSets = inspector.connectedSets();
 
 			// I want to find the equivalent node of desc
 			for (Set<T> equivalenceSet : equivalenceSets) {

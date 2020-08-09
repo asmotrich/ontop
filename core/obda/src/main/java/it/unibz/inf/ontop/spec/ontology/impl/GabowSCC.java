@@ -20,12 +20,17 @@ package it.unibz.inf.ontop.spec.ontology.impl;
  * #L%
  */
 
-
 import com.google.common.collect.ImmutableSet;
 import it.unibz.inf.ontop.spec.ontology.Equivalences;
-import org.jgrapht.DirectedGraph;
+import org.jgrapht.graph.DefaultDirectedGraph;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
 
 
 /**
@@ -45,7 +50,7 @@ public class GabowSCC<V, E>
     //~ Instance fields --------------------------------------------------------
 
     // the graph to compute the strongly connected sets 
-    private final DirectedGraph<V, E> graph;
+    private final DefaultDirectedGraph<V, E> graph;
 
     // stores the vertices
     private Deque<VertexNumber<V>> stack = new ArrayDeque<VertexNumber<V>>();
@@ -71,7 +76,7 @@ public class GabowSCC<V, E>
      *
      * @throws IllegalArgumentException
      */
-    public GabowSCC(DirectedGraph<V, E> directedGraph)
+    public GabowSCC(DefaultDirectedGraph<V, E> directedGraph)
     {
         assert (directedGraph != null);
         
@@ -88,7 +93,7 @@ public class GabowSCC<V, E>
      *
      * @return the graph inspected 
      */
-    public DirectedGraph<V, E> getGraph() {
+    public DefaultDirectedGraph<V, E> getGraph() {
         return graph;
     }
 
@@ -155,7 +160,7 @@ public class GabowSCC<V, E>
     /*
      * The subroutine of DFS. 
      */
-    private void dfsVisit(DirectedGraph<V, E> visitedGraph, VertexNumber<V> v) 
+    private void dfsVisit(DefaultDirectedGraph<V, E> visitedGraph, VertexNumber<V> v)
     {	
     	 VertexNumber<V> w;
     	 stack.add(v);

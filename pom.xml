@@ -259,8 +259,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
 
@@ -377,9 +377,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.javabits.jgrapht</groupId>
+                <groupId>org.jgrapht</groupId>
                 <artifactId>jgrapht-core</artifactId>
-                <version>0.9.3</version>
+                <version>1.5.0</version>
             </dependency>
 
             <dependency>
