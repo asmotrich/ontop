@@ -134,7 +134,7 @@
         <jetty.version>9.4.6.v20170531</jetty.version>
         <hikari-cp.version>3.4.5</hikari-cp.version>
         <commons-rdf.version>0.5.0</commons-rdf.version>
-        <guava.version>18.0</guava.version>
+        <guava.version>30.0-jre</guava.version>
         <jsqlparser.version>3.1</jsqlparser.version>
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
         <jackson.version>2.11.1</jackson.version>
@@ -259,8 +259,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
 
@@ -348,7 +348,7 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.13</version>
+                <version>1.7.30</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -379,7 +379,7 @@
             <dependency>
                 <groupId>org.jgrapht</groupId>
                 <artifactId>jgrapht-core</artifactId>
-                <version>1.5.0</version>
+                <version>1.4.0</version>
             </dependency>
 
             <dependency>
